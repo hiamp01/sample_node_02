@@ -7,7 +7,7 @@ WORKDIR /usr/src/app/sample_node_02
 RUN npm install dotenv --save
 RUN npm install
 
-RUN rm ./env
+RUN rm .env
 ENTRYPOINT [ "npm" ]
 CMD ["start"]
 
