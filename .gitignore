@@ -4,3 +4,4 @@ data/
 mongod
 node_modules/
 .jshintrc
+.env
