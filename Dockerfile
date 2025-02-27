@@ -21,7 +21,7 @@ RUN git clone https://github.com/hiamp01/sample_node_02.git
 WORKDIR ${appdir}/sample_node_02
 
 #Copiado de variables de entorno
-COPY *env .
+COPY .env .
 
 #Compilacion
 RUN npm install

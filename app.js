@@ -1,4 +1,5 @@
-// Module dependencies.
+// Module dependencies. 
+require('dotenv').config();
 var express = require('express');
 var routes = require('./routes');
 var path = require('path');
@@ -18,7 +19,7 @@ var MongoClient = require('mongodb').MongoClient;
 var db;
 
 // setup mongo connection
-MongoClient.connect('mongodb://host.docker.internal:27017/sample_node_db', function(err, database) {
+MongoClient.connect('mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PASSWORD + '@' + process.env.MONGO_HOST + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_DB, function(err, database) {
 	if (err) {
 		throw err;
 	}
