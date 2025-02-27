@@ -28,7 +28,7 @@ RUN npm install
 RUN npm install dotenv
 
 #Eliminacion de variables
-RUN rm .env
+#RUN rm .env
 
 #Instruccion inicial
 ENTRYPOINT [ "npm" ]
