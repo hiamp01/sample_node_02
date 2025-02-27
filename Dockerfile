@@ -1,17 +1,39 @@
+#Imagen utilizada
 FROM node:current-slim
+
+#Metadata custom
+LABEL owner="Hector Montecinos"
+LABEL type="node on mongo"
+
+#Variable para directorio
+ENV appdir=/usr/src/app
+
+#actualizacion e instalacion de herramientas
 RUN apt-get update && apt-get install git -y
-WORKDIR /usr/src/app
+
+#directorio donde se ejecutara git clone
+WORKDIR ${appdir}
+
+#Clonado de repositorio del proyecto
 RUN git clone https://github.com/hiamp01/sample_node_02.git
-#COPY package.json .
-WORKDIR /usr/src/app/sample_node_02
-COPY .env .
-RUN npm update
-#RUN npm install dotenv --save
+
+#cambio a directorio del proyecto
+WORKDIR ${appdir}/sample_node_02
+
+#Copiado de variables de entorno
+COPY *env .
+
+#Compilacion
 RUN npm install
 
+#Eliminacion de variables
 RUN rm .env
+
+#Instruccion inicial
 ENTRYPOINT [ "npm" ]
+
+#opcion para instruccion inicial
 CMD ["start"]
 
-#EXPOSE 3005
-#COPY . .
+#puerto expuesto
+EXPOSE 3000
