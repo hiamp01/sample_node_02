@@ -25,6 +25,7 @@ COPY .env .
 
 #Compilacion
 RUN npm install
+RUN npm install dotenv
 
 #Eliminacion de variables
 RUN rm .env
